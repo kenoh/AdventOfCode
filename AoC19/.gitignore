@@ -1,0 +1,5 @@
+.stack-work/
+AoC19.cabal
+*~
+*.hi
+*.o
