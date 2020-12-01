@@ -20,10 +20,18 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/AoC20#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+- base-noprelude >= 4.7 && < 5
+- containers
+- split
+- relude
 
 library:
   source-dirs: src
+  #other-modules: Prelude
+  mixins: base hiding (Prelude)
+        , relude (Relude as Prelude)
+
+data-files: src/data/*
 
 executables:
   AoC20-exe:
@@ -46,3 +54,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - AoC20
+    - hspec
