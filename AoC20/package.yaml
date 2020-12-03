@@ -24,6 +24,7 @@ dependencies:
 - containers
 - split
 - relude
+- parsec
 
 library:
   source-dirs: src
