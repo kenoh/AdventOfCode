@@ -23,14 +23,16 @@ dependencies:
 - base-noprelude >= 4.7 && < 5
 - containers
 - split
-- relude
+- universum
 - parsec
+- extra
+- ghc
 
 library:
   source-dirs: src
   #other-modules: Prelude
   mixins: base hiding (Prelude)
-        , relude (Relude as Prelude)
+        , universum (Universum as Prelude)
 
 data-files: src/data/*
 

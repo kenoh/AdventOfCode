@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Lib
   ( aocInput
   , intsDwim
@@ -6,16 +7,15 @@ module Lib
 
 import Paths_AoC20
 
-aocInput :: String -> IO Text
+aocInput :: FilePath -> IO Text
 aocInput fn = do
-    pth <- getDataFileName ("src/data/input-D" ++ fn)
-    readFileText pth
+    pth <- getDataFileName ("src/data/input-D" ++ fn :: FilePath)
+    readFile pth
 
-intsDwim :: Text -> [Integer]
-intsDwim input = mapMaybe ((readMaybe :: String -> Maybe Integer) . toString) $ lines input
+intsDwim :: Text -> [Int]
+intsDwim input = mapMaybe (readMaybe . toString) $ lines input
 
-aocInputInts :: String -> IO [Integer]
+aocInputInts :: FilePath -> IO [Int]
 aocInputInts fn = do
     input <- aocInput fn
     return $ intsDwim input
-

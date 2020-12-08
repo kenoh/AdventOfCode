@@ -1,7 +1,5 @@
 {-# LANGUAGE NamedFieldPuns #-}
-module D02b (D02b.run, d02a, d02ParseInput, d02, run') where
-
-import Relude.Unsafe ((!!))
+module D02b (D02b.run, d02b, d02ParseInput, d02, run') where
 
 import D02a
 
