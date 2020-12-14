@@ -7,6 +7,7 @@ import D02a ( d02a, d02ParseInput )
 import D02b ( d02b )
 import D03a ( d03a )
 import D03b ( d03b )
+import D04a ( d04a )
 
 spec = do
     describe "D01" $ do
@@ -24,6 +25,10 @@ spec = do
             input <- aocInput "03-ex"
             d03a input `shouldBe` 7
             d03b input `shouldBe` 336
+    describe "D04" $ do
+        it "passes the example" $ do
+            input <- aocInput "04-ex"
+            d04a input `shouldBe` 2
 
 
 main :: IO ()

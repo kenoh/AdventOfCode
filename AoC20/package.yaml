@@ -27,6 +27,7 @@ dependencies:
 - parsec
 - extra
 - ghc
+- text
 
 library:
   source-dirs: src

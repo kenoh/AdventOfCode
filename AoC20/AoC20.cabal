@@ -25,6 +25,8 @@ data-files:
     src/data/input-D02-ex
     src/data/input-D03
     src/data/input-D03-ex
+    src/data/input-D04
+    src/data/input-D04-ex
 
 source-repository head
   type: git
@@ -38,6 +40,8 @@ library
       D02b
       D03a
       D03b
+      D04a
+      D04b
       Lib
       Prelude
   other-modules:
@@ -51,6 +55,7 @@ library
     , ghc
     , parsec
     , split
+    , text
     , universum
   default-language: Haskell2010
 
@@ -69,6 +74,7 @@ executable AoC20-exe
     , ghc
     , parsec
     , split
+    , text
     , universum
   default-language: Haskell2010
 
@@ -89,5 +95,6 @@ test-suite AoC20-test
     , hspec
     , parsec
     , split
+    , text
     , universum
   default-language: Haskell2010
