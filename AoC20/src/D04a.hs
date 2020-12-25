@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module D04a (d04a, run) where
+module D04a (d04a, run, d04, PassportValidator, validPassports, Passport) where
 
 import Prelude hiding ((<|>), try)
 import Text.Parsec
@@ -54,22 +54,26 @@ fileParser = do
   return contents
 
 
-mustFields :: Passport -> Bool
-mustFields entries = all (`member` entries) fields
+type PassportValidator = Passport -> Either String Bool
+
+mustFields :: PassportValidator
+mustFields entries = all (`member` entries) fields & orFailWith "mustFields failed"
   where fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
-
-
-validp :: Passport -> Bool
-validp p = foldr (\f b -> f p && b) True [mustFields]
-
-d04a' :: [Passport] -> Int
-d04a' = length . filter validp
-
-d04a :: Text -> Int
-d04a input = d04a' $ case parse fileParser "(blah)" input of
+passports :: Text -> [Passport]
+passports input = case parse fileParser "(blah)" input of
   Left e -> error (show e) []
   Right ps -> map fromList ps
+
+validPassports :: PassportValidator -> Text -> [Passport]
+validPassports validator = filterEither ({- debugFilter -} validator) . passports
+
+-- magic ((.) . (.)) is . which takes two args, not just one. :)
+d04 :: PassportValidator -> Text -> Int
+d04 = ((.) . (.)) length validPassports
+
+d04a :: Text -> Int
+d04a = d04 mustFields
 
 run = do
   input <- aocInput "04"

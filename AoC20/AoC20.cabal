@@ -27,6 +27,8 @@ data-files:
     src/data/input-D03-ex
     src/data/input-D04
     src/data/input-D04-ex
+    src/data/input-D04-ex-invalid
+    src/data/input-D04-ex-valid
 
 source-repository head
   type: git

@@ -8,6 +8,7 @@ import D02b ( d02b )
 import D03a ( d03a )
 import D03b ( d03b )
 import D04a ( d04a )
+import D04b ( d04b )
 
 spec = do
     describe "D01" $ do
@@ -26,9 +27,15 @@ spec = do
             d03a input `shouldBe` 7
             d03b input `shouldBe` 336
     describe "D04" $ do
-        it "passes the example" $ do
+        it "passes the example a" $ do
             input <- aocInput "04-ex"
             d04a input `shouldBe` 2
+        it "passes invalid ex" $ do
+            invalid <- aocInput "04-ex-invalid"
+            d04b invalid `shouldBe` 0
+        it "passes valid ex" $ do
+            valid <- aocInput "04-ex-valid"
+            d04b valid `shouldBe` 4
 
 
 main :: IO ()
